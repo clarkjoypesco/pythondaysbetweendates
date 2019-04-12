@@ -72,7 +72,8 @@ def daysBetweenDates(year1, month1, day1, year2, month2, day2):
        and year2/month2/day2. Assumes inputs are valid dates
        in Gregorian calendar, and the first date is not after
        the second."""
-        
+    
+    assert not dateisbefore(year2, month2, day2,year1, month1, day1)
     # YOUR CODE HERE!
     days = 0
     while dateisbefore(year1, month1, day1, year2, month2, day2):
@@ -104,6 +105,11 @@ def test():
             print "Test with data:", args, "failed"
         else:
             print "Test case passed!"
+        except AssertionError:
+            if answer == "AssertionError":
+                print "Nice job! Test case {0} correctly raises AssertionError!\n".format(args)
+            else:
+                print "Check your work! Test case {0} should not raise AssertionError!\n".format(args)
 
 #test()
 
